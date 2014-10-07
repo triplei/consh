@@ -1,0 +1,19 @@
+{
+    "name": "triplei/consh",
+    "description": "Concrete5.7 Shell Scripts",
+    "require": {
+        "php": ">=5.4",
+        "league/climate": "~2",
+        "phpseclib/phpseclib": "~0.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dan Klassen",
+            "email": "dan@triplei.ca"
+        }
+    ]
+}

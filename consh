@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+SELF_DIRNAME="`dirname -- "$0"`"
+SELF_PATH="`cd -P -- "$SELF_DIRNAME" && pwd -P`/`basename -- "$0"`"
+
+# Build the path to drush.php.
+SCRIPT_PATH="`dirname "$SELF_PATH"`/consh.php"
+
+php="`which php-cli 2>/dev/null`"
+if [ ! -x "$php" ]; then
+    php="`which php 2>/dev/null`"
+fi
+if [ ! -x "$php" ]; then
+    echo "ERROR: can't find php."; exit 1
+fi
+exec "$php" "$SCRIPT_PATH"
