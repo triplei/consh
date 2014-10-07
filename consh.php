@@ -1,10 +1,11 @@
 <?php
-use Consh\Core\Commands\Help;
+
+use Consh\Core\Commands\Config;
 
 require 'vendor/autoload.php';
 require 'includes/autoload.php';
 
-$help = new Help();
-$help->run();
+$config = new Config();
+$config->run();
 
 require 'includes/init.php';
