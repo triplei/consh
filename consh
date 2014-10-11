@@ -3,6 +3,18 @@
 SELF_DIRNAME="`dirname -- "$0"`"
 SELF_PATH="`cd -P -- "$SELF_DIRNAME" && pwd -P`/`basename -- "$0"`"
 
+# Resolve symlinks - this is the equivalent of "readlink -f", but also works with non-standard OS X readlink.
+while [ -h "$SELF_PATH" ]; do
+    # 1) cd to directory of the symlink
+    # 2) cd to the directory of where the symlink points
+    # 3) Get the pwd
+    # 4) Append the basename
+    DIR="`dirname -- "$SELF_PATH"`"
+    SYM="`readlink "$SELF_PATH"`"
+    SYM_DIRNAME="`dirname -- "$SYM"`"
+    SELF_PATH="`cd "$DIR" && cd "$SYM_DIRNAME" && pwd`/`basename -- "$SYM"`"
+done
+
 # Build the path to drush.php.
 SCRIPT_PATH="`dirname "$SELF_PATH"`/consh.php"
 
@@ -13,4 +25,4 @@ fi
 if [ ! -x "$php" ]; then
     echo "ERROR: can't find php."; exit 1
 fi
-exec "$php" "$SCRIPT_PATH"
+exec "$php" "$SCRIPT_PATH" "$@"

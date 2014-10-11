@@ -6,13 +6,22 @@
 namespace Consh\Core\Commands;
 
 use Consh\Core\Command;
+use Consh\Core\Setting;
 use League\CLImate\CLImate;
 
 class Config extends Command{
 
-    public function run()
+    public function run($args)
     {
         $cli = new CLImate();
+
+        if (file_exists(CONSH_CONFIG_FILE)) {
+            $input = $cli->confirm('It looks like there is a consh config file already. Do you want to reconfigure consh and overwrite the existing file?');
+            if (!$input->confirmed()) {
+                $cli->output('Canceled');
+                return;
+            }
+        }
 
         $cli->output("Please provide the following information");
         $input = $cli->input("Remote host (ie: site.domain.com):");
@@ -23,7 +32,7 @@ class Config extends Command{
 
         $input = $cli->input("Remote home folder [/home/{$user}/]");
         $input->defaultTo("/home/{$user}/");
-        $home = $input->prompt();
+        $remote_home = $input->prompt();
 
         $input = $cli->input("Remote document root (relative to home folder) [public_html/]");
         $input->defaultTo("public_html/");
@@ -64,7 +73,7 @@ class Config extends Command{
             'remote' => array(
                 'host' => $host,
                 'user' => $user,
-                'home' => $home,
+                'home' => $remote_home,
                 'doc_root' => $doc_root
             ),
             'ssh' => array(
@@ -79,11 +88,12 @@ class Config extends Command{
             )
         );
 
-        $cli->dump($config);
+        Setting::createSettings($config);
     }
 
     public function help()
     {
 
     }
+
 } 

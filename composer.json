@@ -1,6 +1,8 @@
 {
     "name": "triplei/consh",
     "description": "Concrete5.7 Shell Scripts",
+    "prefer-stable" : true,
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4",
         "league/climate": "~2",

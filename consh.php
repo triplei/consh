@@ -1,11 +1,18 @@
 <?php
 
-use Consh\Core\Commands\Config;
-
 require 'vendor/autoload.php';
 require 'includes/autoload.php';
-
-$config = new Config();
-$config->run();
-
 require 'includes/init.php';
+
+$args = array();
+if (count($argv) < 2) {
+    $help = new \Consh\Core\Commands\Help();
+    $help->showDefaultHelp();
+    exit;
+} else if (count($argv) > 2) {
+    $args = array_slice($argv, 2);
+}
+$userCommand = $argv[1];
+
+
+\Consh\Core\CommandParser::run($userCommand, $args);
