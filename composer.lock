@@ -4,8 +4,51 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "270241d3d109ec8ccdd5e76d41a73e20",
+    "hash": "cc40302b59683f926d20d8071f7cff2a",
     "packages": [
+        {
+            "name": "albertofem/rsync-lib",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/albertofem/rsync-lib.git",
+                "reference": "4b378d907d99f3478ac0b14c17d2599bd34ed8f2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/albertofem/rsync-lib/zipball/4b378d907d99f3478ac0b14c17d2599bd34ed8f2",
+                "reference": "4b378d907d99f3478ac0b14c17d2599bd34ed8f2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "AFM": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alberto Fernandez",
+                    "email": "albertofem@gmail.com"
+                }
+            ],
+            "description": "A simple PHP rsync wrapper library",
+            "homepage": "http://albertofem.com",
+            "keywords": [
+                "rsync library"
+            ],
+            "time": "2014-08-22 17:27:13"
+        },
         {
             "name": "league/climate",
             "version": "2.4.0",
@@ -901,7 +944,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "albertofem/rsync-lib": 20
+    },
     "prefer-stable": true,
     "platform": {
         "php": ">=5.4"
