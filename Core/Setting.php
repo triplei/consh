@@ -8,7 +8,10 @@ namespace Consh\Core;
 use League\CLImate\CLImate;
 
 class Setting {
+
     /**
+     * write the passed in associative array of settings to the configuration file
+     *
      * @param array $settings_array the full set of settings to save
      * @return bool
      */
@@ -42,6 +45,8 @@ EOL;
     }
 
     /**
+     * get the value for a specific setting
+     *
      * @param $key string a scoped version of the setting to retrieve. IE: remote:host
      * @return mixed the setting from the settings file
      */
