@@ -10,19 +10,28 @@ use AFM\Rsync\Rsync;
 use Consh\Core\Command;
 use Consh\Core\Local;
 use Consh\Core\Remote;
+use Consh\Core\Setting;
 use League\CLImate\CLImate;
 
 class Pull extends Command{
 
     public function run($args)
     {
-        $rsync = new Rsync();
-        $origin = Remote::getFilesPath();
+        $cli = new CLImate();
+        $origin = Setting::getSetting('remote:user') . '@' . Setting::getSetting('remote:host') . ':' . Remote::getFilesPath();
         $dest = Local::getFilesPath();
 
-        $cli = new CLImate();
-        $cli->out($origin);
-        $cli->out($dest);
+        if (!file_exists($dest)) {
+            if (!mkdir($dest, 0777, true)) {
+                $cli->error('Could not create local files directory');
+                return false;
+            }
+        }
+        
+        $rsync = new Rsync();
+        $rsync->setVerbose(true);
+        $rsync->setExclude(Setting::getSetting('rsync:excludes'));
+        $rsync->sync($origin, $dest);
     }
 
     public function help()

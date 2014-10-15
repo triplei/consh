@@ -85,6 +85,12 @@ class Config extends Command{
                 'host' => $mysql_host,
                 'user' => $mysql_user,
                 'pass' => $mysql_pass
+            ),
+            'rsync' => array(
+                'excludes' => array(
+                    'cache/',
+                    'thumbnails/'
+                )
             )
         );
 

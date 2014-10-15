@@ -20,7 +20,7 @@ class Local {
      */
     public static function getDocRoot()
     {
-        return BASE_DIR;
+        return BASE_DIR . "/";
     }
 
     /**
