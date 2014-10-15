@@ -31,6 +31,13 @@ EOL;
 
         $data = $header . var_export($settings_array, true) . $footer;
 
+        if (!file_exists(CONSH_CONFIG_FOLDER)) {
+            if (!mkdir(CONSH_CONFIG_FOLDER, 0777, true)) {
+                $cli->error('Could not find or create config folder at' . CONSH_CONFIG_FOLDER);
+                return false;
+            }
+        }
+
         if (!$handle = fopen(CONSH_CONFIG_FILE, 'w')) {
             $cli->error('Could not open ' . CONSH_CONFIG_FILE . ' for writing');
             return false;
