@@ -21,7 +21,15 @@ class Remote {
      */
     public static function getDocRoot()
     {
-        return Setting::getSetting('remote:home') . Setting::getSetting('remote:doc_root') . '';
+        return Remote::getHomePath() . Setting::getSetting('remote:doc_root') . '';
+    }
+
+    /**
+     * @return string
+     */
+    public static function getHomePath()
+    {
+        return Setting::getSetting('remote:home');
     }
 
     /**

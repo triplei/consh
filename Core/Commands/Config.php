@@ -65,6 +65,25 @@ class Config extends Command{
         $input = $cli->input("Remote MySQL password");
         $mysql_pass = $input->prompt();
 
+        $input = $cli->input("Remote MySQL database [{$user}]");
+        $input->defaultTo($user);
+        $mysql_db = $input->prompt();
+
+        $input = $cli->input("Local MySQL host [localhost]");
+        $input->defaultTo('localhost');
+        $local_mysql_host = $input->prompt();
+
+        $input = $cli->input('Local MySQL user [root]');
+        $input->defaultTo('root');
+        $local_mysql_user = $input->prompt();
+
+        $input = $cli->input('Local MySQL password []');
+        $local_mysql_pass = $input->prompt();
+
+        $input = $cli->input("Local MySQL database [{$user}]");
+        $input->defaultTo($user);
+        $local_mysql_db = $input->prompt();
+
         $home = getenv("HOME");
         $pub_key = str_replace("~", $home, $pub_key);
         $priv_key = str_replace("~", $home, $priv_key);
@@ -84,7 +103,14 @@ class Config extends Command{
             'mysql' => array(
                 'host' => $mysql_host,
                 'user' => $mysql_user,
-                'pass' => $mysql_pass
+                'pass' => $mysql_pass,
+                'db'   => $mysql_db
+            ),
+            'local-mysql' => array(
+                'user' => $local_mysql_user,
+                'host' => $local_mysql_host,
+                'pass' => $local_mysql_pass,
+                'db'   => $local_mysql_db
             ),
             'rsync' => array(
                 'excludes' => array(

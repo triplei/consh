@@ -17,6 +17,7 @@ class Local {
 
     /**
      * @return string
+     * @todo this should be smart and walk up / down the tree to find the document root
      */
     public static function getDocRoot()
     {

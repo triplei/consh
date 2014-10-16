@@ -7,7 +7,7 @@ namespace Consh\Core\Commands;
 
 
 use Consh\Core\Command;
-use Consh\Core\Setting;
+use Consh\Core\LocalDB;
 
 use League\CLImate\CLImate;
 
@@ -17,8 +17,8 @@ class Debug extends Command {
     {
         $cli = new CLImate();
 
-        $setting = Setting::getSetting("remote:home");
-        $cli->dump($setting);
+        $db = new LocalDB();
+        $db->execute("SELECT * FROM users");
     }
 
     public function help()
