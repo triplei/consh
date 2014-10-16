@@ -40,3 +40,4 @@ class Remote {
         return Remote::getApplicationPath() . "files/";
     }
 }
+

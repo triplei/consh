@@ -27,6 +27,8 @@ Now you should be able to run the various consh commands.
 
 * `consh config` Write the initial configuration file
 * `consh db:pull` Pull the remote site's database and import it into the local installation
+* `consh db:backup` create a backup of the remote database on the local system
+* `consh db:restore <filename>` restore one of the previously created local backups
 * `consh files:pull` Rsync the remote site's files directory to the local filesystem
 * `consh pull` Pulls the database and files from the remote server
 

@@ -117,6 +117,9 @@ class Config extends Command{
                     'cache/',
                     'thumbnails/'
                 )
+            ),
+            'consh' => array(
+                'db_backup_folder' => CONSH_CONFIG_FOLDER . '/db_backup'
             )
         );
 

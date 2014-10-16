@@ -56,6 +56,6 @@ class Pull extends Command{
     public function help()
     {
         $cli = new CLImate();
-        $cli->output("Help for Db:Pull");
+        $cli->output("pull down a copy of the remote database and import it into the local database");
     }
 } 
