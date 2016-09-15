@@ -1,8 +1,7 @@
 <?php
-
-require 'vendor/autoload.php';
-require 'includes/autoload.php';
-require 'includes/init.php';
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/includes/autoload.php';
+require __DIR__ . '/includes/init.php';
 
 $args = array();
 if (count($argv) < 2) {
