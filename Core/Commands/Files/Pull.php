@@ -36,6 +36,7 @@ class Pull extends Command{
 
     public function help()
     {
-
+        $cli = new CLImate();
+        $cli->output("pull the files directory from the remote server to the local installation");
     }
 } 

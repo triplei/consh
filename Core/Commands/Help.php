@@ -16,8 +16,13 @@ class Help extends Command
         $cli = new CLImate();
         $cli->out("You have reached the help desk");
 
-        $command = CommandParser::getCommandObject($args[0]);
-        return $command->help();
+        if (is_array($args) && count($args) > 0) {
+            $command = CommandParser::getCommandObject($args[0]);
+
+            return $command->help();
+        } else {
+            $this->showDefaultHelp();
+        }
     }
 
     public function help()
