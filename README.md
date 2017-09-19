@@ -17,7 +17,7 @@ This is the successor to the previous consh scripts for concrete5.5 / 5.6 rewrit
 In the base directory of a local concrete5.7 installation run the consh configuration script `consh config`. 
 
 *consh currently assumes that you have your concrete5 installation in a public_html/ sub-folder* The plan is to have 
-this dynamically discovered from a number of common sub-folders (or non at all). 
+this dynamically discovered from a number of common sub-folders (or none at all). 
 
 This will create a config file in ./public_html/application/config/generated_overrides/consh/consh.php
 
@@ -29,8 +29,9 @@ Now you should be able to run the various consh commands.
 * `consh db:pull` Pull the remote site's database and import it into the local installation
 * `consh db:backup` create a backup of the remote database on the local system
 * `consh db:restore <filename>` restore one of the previously created local backups
-* `consh files:pull` Rsync the remote site's files directory to the local filesystem
+* `consh files:pull` rsync the remote site's files directory to the local filesystem
 * `consh pull` Pulls the database and files from the remote server
+* `consh packages:pull` rysnc the remote site's packages directory to the local filesystem
 
 # Pull Requests
 

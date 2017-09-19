@@ -31,4 +31,9 @@ class Local {
     {
         return Local::getApplicationPath() . "files/";
     }
+
+    public static function getPackagesPath()
+    {
+        return Local::getDocRoot() . 'packages/';
+    }
 } 

@@ -39,5 +39,13 @@ class Remote {
     {
         return Remote::getApplicationPath() . "files/";
     }
+
+    /**
+     * @return string
+     */
+    public static function getPackagesPath()
+    {
+        return Remote::getDocRoot() . 'packages/';
+    }
 }
 
