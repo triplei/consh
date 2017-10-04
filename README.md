@@ -32,6 +32,7 @@ Now you should be able to run the various consh commands.
 * `consh files:pull` rsync the remote site's files directory to the local filesystem
 * `consh pull` Pulls the database and files from the remote server
 * `consh packages:pull` rysnc the remote site's packages directory to the local filesystem
+* `consh blocks:create-template block_handle template_name` copy the base template from the concrete/blocks directory to application/blocks/block_handle/templates/template_name/view.php
 
 # Pull Requests
 

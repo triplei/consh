@@ -15,6 +15,7 @@ class CommandParser {
 
     public static function getCommandObject($string)
     {
+        $string = str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));
         $className = "Consh\\Core\\Commands\\" . str_replace(' ', '\\', ucwords(str_replace(':', ' ', $string)));
         return new $className();
     }
