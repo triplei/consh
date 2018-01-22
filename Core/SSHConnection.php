@@ -89,6 +89,7 @@ final class SSHConnection {
         if (!$ssh->login(Setting::getSetting('remote:user'), $key)) {
             $cli = new CLImate();
             $cli->error("Could not connect to server");
+            die();
             return false;
         }
         return $ssh;
