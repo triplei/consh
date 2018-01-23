@@ -9,6 +9,11 @@
 define('CONSH_VERSION', '2.0.0a1');
 
 /**
+ * the path to the built in Consh Commands
+ */
+define('CONSH_COMMAND_DIR', (dirname(__FILE__)). '/../Core/Commands');
+
+/**
  * relative path to the document root of the site to the current working directory
  *
  * @TODO ideally this would be dynamically discovered.

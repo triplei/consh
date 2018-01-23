@@ -1,4 +1,5 @@
 <?php
+
 namespace Consh\Core\Commands;
 
 use Consh\Core\Command;
@@ -35,6 +36,38 @@ class Help extends Command
         $cli = new CLImate();
         $cli->out("Please enter a command");
         $cli->out("Try consh help for more help or consh <command> help for more details about the command");
+        $cli->out("");
+        $cli->out("Current Core Commands:");
+        $cli->out("----------------------");
+        $this->getAllCommands();
+    }
+
+    protected function getAllCommands()
+    {
+        $this->parseDir(CONSH_COMMAND_DIR);
+
+    }
+
+    private function parseDir($path)
+    {
+        $dir = new \DirectoryIterator($path);
+        $cli = new CLImate();
+        foreach ($dir as $item) {
+            if ($item->isDot()) {
+                continue;
+            } else if ($item->isDir()) {
+                $this->parseDir($item->getPathname());
+            } else {
+                $this->getCommandFromPath($item->getPathname());
+            }
+        }
+    }
+
+    private function getCommandFromPath($path)
+    {
+        $cli = new CLImate();
+        $cmd = substr(str_replace('/', ':', str_replace(CONSH_COMMAND_DIR . "/", '', $path)), 0, -4);
+        $cli->out($cmd);
     }
 
 } 
