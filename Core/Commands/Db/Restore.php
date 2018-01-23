@@ -6,11 +6,12 @@
 namespace Consh\Core\Commands\Db;
 
 
+use Consh\Core\Command;
 use Consh\Core\LocalDB;
 use Consh\Core\Setting;
 use League\CLImate\CLImate;
 
-class Restore {
+class Restore extends Command {
 
     public function run($args)
     {
@@ -67,4 +68,10 @@ class Restore {
             }
         }
     }
-} 
+
+    public function help()
+    {
+        $cli = new CLImate();
+        $cli->output("restore a copy of the database to the local concrete5 installation.");
+    }
+}
